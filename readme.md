@@ -85,13 +85,14 @@ FamPay Assessment/
 
 Install the required dependency using pip:
 
+```bash
 pip install pandas
-
+```
 
 Or install from the requirements file:
-
+```bash
 pip install -r requirements.txt
-
+```
 
 ---
 
@@ -134,9 +135,9 @@ Each ticker output contains **exactly 24 rows**, representing two years of month
 ## Running the Script
 
 Execute the main processing script using:
-
+```bash
 python main.py
-
+```
 
 The script will:
 
