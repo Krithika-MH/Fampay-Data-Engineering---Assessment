@@ -51,25 +51,24 @@ The solution performs the following steps in sequence:
 
 ## Project Structure
 
+```text
 fampay-assessment/
 ├── main.py
 ├── stock_data.csv
 ├── output/
-│ ├── result_AAPL.csv
-│ ├── result_AMD.csv
-│ ├── result_AMZN.csv
-│ ├── result_AVGO.csv
-│ ├── result_CSCO.csv
-│ ├── result_MSFT.csv
-│ ├── result_NFLX.csv
-│ ├── result_PEP.csv
-│ ├── result_TMUS.csv
-│ └── result_TSLA.csv
+│   ├── result_AAPL.csv
+│   ├── result_AMD.csv
+│   ├── result_AMZN.csv
+│   ├── result_AVGO.csv
+│   ├── result_CSCO.csv
+│   ├── result_MSFT.csv
+│   ├── result_NFLX.csv
+│   ├── result_PEP.csv
+│   ├── result_TMUS.csv
+│   └── result_TSLA.csv
 ├── README.md
 └── requirements.txt
 
-
----
 
 ## Requirements
 
