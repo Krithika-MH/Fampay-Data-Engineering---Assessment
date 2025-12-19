@@ -148,6 +148,15 @@ The script will:
 
 ---
 
+### Validation Script
+
+The project also includes a separate validation script to verify the correctness of the generated outputs.
+
+Run the validation script using:
+
+```bash
+python validate_output.py
+
 
 
 
