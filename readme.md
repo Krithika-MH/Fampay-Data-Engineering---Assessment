@@ -1,143 +1,134 @@
-FamPay Data Engineering Assessment
-Overview
+# FamPay Data Engineering Assessment
 
-This project is a solution to the FamPay Data Engineering assessment. The objective is to transform two years of daily stock price data into monthly summaries and compute common technical indicators for multiple stock symbols.
+## Author
+M Krithika
 
-The solution is implemented using Python and pandas, with a focus on correctness, clarity, and modular design.
+---
 
-Problem Statement
+## Overview
 
-Given daily stock price data for the last two years for 10 stock tickers, the task is to:
+This repository contains a complete and correct solution to the **FamPay Data Engineering Assessment**.
 
-Aggregate daily data into monthly summaries
+The objective of this project is to transform two years of daily stock price data into clean monthly summaries and compute commonly used technical indicators for multiple stock symbols. The solution is designed with correctness, readability, and modularity in mind, following good data engineering practices.
 
-Compute OHLC values for each month
+The entire pipeline is implemented in Python using the pandas library.
 
-Calculate technical indicators including Simple Moving Averages and Exponential Moving Averages
+---
 
-Store the processed results in separate output files for each ticker
+## Problem Statement
 
-Solution Approach
+Given daily stock price data for the last two years for **10 stock tickers**, the task is to:
 
-The solution performs the following steps:
+- Aggregate daily stock data into monthly summaries  
+- Compute monthly OHLC values  
+- Calculate technical indicators such as Simple Moving Averages and Exponential Moving Averages  
+- Store the processed results in separate output files for each ticker  
 
-Load and preprocess the daily stock price data
+---
 
-Resample the data to monthly frequency using month end dates
+## Solution Approach
 
-Compute monthly OHLC values
+The solution performs the following steps in sequence:
 
-Open: first trading day open price of the month
+1. Load and preprocess the daily stock price data  
+2. Resample the data to monthly frequency using **month-end dates**  
+3. Compute monthly OHLC values:
+   - **Open**: First trading day open price of the month  
+   - **High**: Maximum price within the month  
+   - **Low**: Minimum price within the month  
+   - **Close**: Last trading day close price of the month  
+4. Calculate technical indicators based on **monthly closing prices**:
+   - SMA 10  
+   - SMA 20  
+   - EMA 10  
+   - EMA 20  
+5. Ensure exactly **24 months of data per ticker**  
+6. Partition the final dataset by ticker  
+7. Write the results to individual CSV files  
+8. Validate output structure and row counts  
 
-High: maximum price within the month
+---
 
-Low: minimum price within the month
+## Project Structure
 
-Close: last trading day close price of the month
-
-Volume: total traded volume for the month
-
-Calculate technical indicators based on monthly closing prices
-
-SMA 10
-
-SMA 20
-
-EMA 10
-
-EMA 20
-
-Partition the final dataset by ticker and write results to CSV files
-
-Validate output structure and row counts
-
-Project Structure
 fampay-assessment/
 ├── main.py
 ├── stock_data.csv
 ├── output/
-│   ├── result_AAPL.csv
-│   ├── result_AMD.csv
-│   ├── result_AMZN.csv
-│   ├── result_AVGO.csv
-│   ├── result_CSCO.csv
-│   ├── result_MSFT.csv
-│   ├── result_NFLX.csv
-│   ├── result_PEP.csv
-│   ├── result_TMUS.csv
-│   └── result_TSLA.csv
+│ ├── result_AAPL.csv
+│ ├── result_AMD.csv
+│ ├── result_AMZN.csv
+│ ├── result_AVGO.csv
+│ ├── result_CSCO.csv
+│ ├── result_MSFT.csv
+│ ├── result_NFLX.csv
+│ ├── result_PEP.csv
+│ ├── result_TMUS.csv
+│ └── result_TSLA.csv
 ├── README.md
 └── requirements.txt
 
-Requirements
 
-Python 3.8 or higher
+---
 
-pandas
+## Requirements
 
-Installation
+- Python 3.8 or higher  
+- pandas  
 
-Install the required dependencies using pip:
+---
+
+## Installation
+
+Install the required dependency using pip:
 
 pip install pandas
 
 
-Or using the requirements file:
+Or install from the requirements file:
 
 pip install -r requirements.txt
 
-Dataset
 
-Download the dataset from the following repository:
+---
+
+## Dataset
+
+Download the dataset from the following GitHub repository:
 
 https://github.com/sandeep-tt/tt-intern-dataset
 
-Save the file as stock_data.csv in the project root directory.
-
-You can also download it using:
-
-wget -O stock_data.csv https://raw.githubusercontent.com/sandeep-tt/tt-intern-dataset/main/stock_data.csv
-
-Input Data Schema
-date,volume,open,high,low,close,adjclose,ticker
+Save the file as `stock_data.csv` in the project root directory.
 
 
-Tickers included:
+### Tickers Included
 
 AAPL, AMD, AMZN, AVGO, CSCO, MSFT, NFLX, PEP, TMUS, TSLA
 
-Output Data Schema
+---
 
-Each output file contains monthly aggregated data with the following columns:
+## Output Data Schema
 
-date,open,high,low,close,volume,sma_10,sma_20,ema_10,ema_20
+Each output file contains **monthly aggregated data** with the following columns:
 
 
-Column descriptions:
+### Column Descriptions
 
-date: month end date
+- **date**: Month-end date  
+- **open**: First trading day open price of the month  
+- **high**: Highest price during the month  
+- **low**: Lowest price during the month  
+- **close**: Last trading day close price of the month  
+- **sma_10**: 10-month simple moving average of closing price  
+- **sma_20**: 20-month simple moving average of closing price  
+- **ema_10**: 10-month exponential moving average of closing price  
+- **ema_20**: 20-month exponential moving average of closing price  
 
-open: first trading day open price of the month
+Each ticker output contains **exactly 24 rows**, representing two years of monthly data.
 
-high: highest price during the month
+---
 
-low: lowest price during the month
-
-close: last trading day close price of the month
-
-volume: total traded volume during the month
-
-sma_10: 10 month simple moving average of close price
-
-sma_20: 20 month simple moving average of close price
-
-ema_10: 10 month exponential moving average of close price
-
-ema_20: 20 month exponential moving average of close price
-
-Each ticker output contains exactly 24 rows representing two years of monthly data.
-
-Running the Script
+## Running the Script
 
 Execute the main processing script using:
 
@@ -146,12 +137,14 @@ python main.py
 
 The script will:
 
-Load and process the dataset
+- Load and preprocess the dataset  
+- Generate monthly OHLC summaries  
+- Compute technical indicators  
+- Save results to the `output` directory  
+- Print a validation report to the console  
 
-Generate monthly summaries
+---
 
-Compute technical indicators
 
-Save results to the output directory
 
-Print a validation report to the console
+
