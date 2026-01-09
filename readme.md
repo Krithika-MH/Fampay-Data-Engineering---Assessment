@@ -1,4 +1,4 @@
-# FamPay Data Engineering Assessment
+# Stock Market Data Engineering Pipeline
 
 ## Author
 M Krithika
@@ -7,23 +7,26 @@ M Krithika
 
 ## Overview
 
-This repository contains a complete and correct solution to the **FamPay Data Engineering Assessment**.
+This project demonstrates the design and implementation of a complete data engineering pipeline for financial time-series data.
 
-The objective of this project is to transform two years of daily stock price data into clean monthly summaries and compute commonly used technical indicators for multiple stock symbols. The solution is designed with correctness, readability, and modularity in mind, following good data engineering practices.
+The pipeline processes two years of daily stock price data for multiple tickers and produces clean, analysis-ready monthly summaries along with commonly used technical indicators.
 
-The entire pipeline is implemented in Python using the pandas library.
+The focus of this project is on:
+- Correct time-series aggregation
+- Data quality and validation
+- Modular and readable Python code
+- Practical financial analytics
 
 ---
 
 ## Problem Statement
 
-Given daily stock price data for the last two years for **10 stock tickers**, the task is to:
+The goal of this project is to build a reliable data pipeline that:
 
-- Aggregate daily stock data into monthly summaries  
-- Compute monthly OHLC values  
-- Calculate technical indicators such as Simple Moving Averages and Exponential Moving Averages  
-- Store the processed results in separate output files for each ticker  
-
+- Transforms daily stock price data into monthly aggregates
+- Computes monthly OHLC values
+- Calculates technical indicators such as SMA and EMA
+- Produces structured outputs suitable for downstream analytics or modeling
 ---
 
 ## Solution Approach
@@ -48,7 +51,14 @@ The solution performs the following steps in sequence:
 8. Validate output structure and row counts  
 
 ---
+## Key Engineering Decisions
 
+- Used month-end resampling to align with standard financial reporting
+- Calculated indicators on monthly closing prices to reduce noise
+- Enforced fixed 24-month output per ticker for consistency
+- Added a separate validation script to ensure correctness and data integrity
+- Partitioned output by ticker to simplify downstream consumption
+---
 ## Project Structure
 
 ```text
